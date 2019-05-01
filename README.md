@@ -12,9 +12,9 @@
 # PHP модули
 <details><summary>Module list</summary>
 <p>
-```python
-bcmath
-bz2
+```
+1. bcmath
+1. bz2
 calendar
 Core
 ctype
