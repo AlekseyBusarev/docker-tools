@@ -1,43 +1,94 @@
-# Docker config
-Универсальный Docker config для работы с разными версиями php для разных проектов.
+# PHP 5.3
 
-# Документация
-1. [Docker: Общая документация](https://docs.docker.com/)
-2. [Docker: Установка](https://docs.docker.com/install/)
-3. [Docker Compose: Общая информация](https://docs.docker.com/compose/overview/)
-4. [Docker Compose: Установка](https://docs.docker.com/compose/install/)
+Окружение для работы с PHP 5.3.
 
-# Доступные CSM системы
-  - CS-Cart
+# Список контейнеров
+1. Ubuntu 12.04
+1. Apache/2.2.22
+1. PHP 5.3.10-1ubuntu3.26 (cli)
+1. MySQL 5.6.44
+1. Phpmyadmin (latest)
 
-# Достуные контейнеры
- - php 5.3
- - php 7.2
- - MySQL
- - Phpmyadmin
- 
-# Типовые команды
-1. docker images - список всех установленных Docker образов.
-1. docker rmi image_name - удалить Docker образ.
-1. docker container ls - список всех активных контейнеров.
-1. docker container ls -a - список всех контейнеров (активных и неактивных).
-1. docker build -t image_name . - создать образ на основе Dockerfile, где: 
-   - image_name - имя, с которым образ будет создан.
-1. docker run -dit --name container_name image_name - создать контейнер на основе Docker образа, где:
-   - container_name - имя, с которым контейнер будет создан
-   - image_name - имя существующего Docker образа
-1. docker container logs container_name - посмотреть логи которые записались при запуске контейнера. Можно увидеть ошибки, которые привели к остановке контейнера.
-1. docker exec -it container_name bash - зайти в контейнер
-1. docker container stop container_name - остановить контейнер.
-1. docker-container rm container_name - удалить контейнер. Удалить можно только остановленный контейнер.
-1. docker-compose up -d --build - запустить контейнеры в Docker Compose конфигурации.
-1. docker-compose stop - остановить все контейнеры в Docker Compose конфигурации.
-1. docker-compose rm - удалить все контейнеры в Docker Compose конфигурации.
+# PHP модули
+<details><summary>Module list</summary>
+<p>
+```python
+bcmath
+bz2
+calendar
+Core
+ctype
+curl
+date
+dba
+dom
+ereg
+exif
+fileinfo
+filter
+ftp
+gd
+gettext
+gmp
+hash
+iconv
+imap
+intl
+json
+libxml
+mbstring
+mcrypt
+mhash
+mysql
+mysqli
+openssl
+pcntl
+pcre
+PDO
+pdo_mysql
+pdo_sqlite
+Phar
+posix
+readline
+Reflection
+session
+shmop
+SimpleXML
+soap
+sockets
+SPL
+sqlite3
+standard
+sysvmsg
+sysvsem
+sysvshm
+tokenizer
+wddx
+xml
+xmlreader
+xmlwriter
+xsl
+zip
+zlib
+```
+</p>
+</details>
 
-# Планы дальнейшего развития
- - Добавить работу SEO ссылок
- - Почему-то очень сильно тормозит работа сайта при запуске контейнеров
- - Контейнер с отправкой почты
- - Контейнер с xDebug
- - Окружение для Laravel
- - Окружение для Magento
+# Start guide
+1. Создайте копию .env от .env.example.
+1. Добавьте настройки переменных оружения в .env файле:
+   - ENV_HOST_PATH - путь до проекта на хост-машине
+   - ENV_CONTAINER_PATH - путь, где будет располагаться проект в контейнере
+   - WEB_HOST_PORT - порт, который пробрасывается в контейнер
+   - WEB_CONTAINER_PORT - порт, на котором будет доступен apache в контейнере
+   - PHPMYADMIN_HOST_PORT - порт, который пробрасывается в контейнер
+   - PHPMYADMIN_CONTAINER_PORT - порт, на котором будет доступен phpmyadmin в контейнере
+   - DB_CONTAINER_PORT - порт, на котором будет доступен mysql в контейнере
+   - DB_USER_ID - ID пользователя базы данных. В контейнере будет создан пользователь с таким же ID как на хост машине, чтобы не было конфликта с правами доступов. Посмотреть ID можно командой *id -u mysql_user*
+   - DB_GROUP_ID - ID группы пользователя базы данных. В контейнере будет создана группа с таким же ID как на хост машине, чтобы не было конфликта с правами доступов. Посмотреть ID группы можно командой *id -g mysql_user*
+   - DB_PASSWORD - Пароль для входа в базу данных
+   - DB_HOST_PATH - Расположение файлов базы данных на хост машине. Пример */var/lib/mysql*
+   - DB_CONTAINER_PATH - Расположение файлов базы данных в контейнере.
+   - USER_NAME - Имя пользователя системы. В контейнере будет создан пользователь с таким же именем как на хост машине, чтобы не было конфликта с правами доступов.
+   - USER_ID - ID пользователя системы. В контейнере будет создан пользователь с таким же ID как на хост машине, чтобы не было конфликта с правами доступов.
+1. Запустить сборку окружения через *docker-compose up -d --build*
