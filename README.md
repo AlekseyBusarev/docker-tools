@@ -12,8 +12,10 @@
 # PHP модули
 <details><summary>Module list</summary>
 <p>
-1. bcmath
-1. bz2
+<lo>
+<li>bcmath</li>
+<li>bz2</li>
+</lo>
 calendar
 Core
 ctype
