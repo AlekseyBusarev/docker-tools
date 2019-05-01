@@ -12,7 +12,6 @@
 # PHP модули
 <details><summary>Module list</summary>
 <p>
-```
 1. bcmath
 1. bz2
 calendar
@@ -70,7 +69,6 @@ xmlwriter
 xsl
 zip
 zlib
-```
 </p>
 </details>
 
