@@ -1,0 +1,32 @@
+version: "3"
+services:
+  web:
+    build:
+      context: "./web/"
+      dockerfile: "Dockerfile"
+      args:
+        USER_ID: ${USER_ID}
+        USER_NAME: ${USER_NAME}
+        TIMEZONE: ${ENV_TIMEZONE}
+    depends_on:
+      - db
+    ports:
+      - "${WEB_CONTAINER_PORT}:${WEB_HOST_PORT}"
+    volumes:
+      - ${ENV_HOST_PATH}:${ENV_CONTAINER_PATH}
+  db:
+    build:
+      context: "./db/"
+      dockerfile: "Dockerfile"
+      args:
+        DB_USER_ID: ${DB_USER_ID}
+        DB_GROUP_ID: ${DB_GROUP_ID}
+        DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_CONTAINER_PORT}"
+    volumes:
+      - ${DB_HOST_PATH}:${DB_CONTAINER_PATH}
+  myadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "${PHPMYADMIN_CONTAINER_PORT}:${PHPMYADMIN_HOST_PORT}"
