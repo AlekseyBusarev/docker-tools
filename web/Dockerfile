@@ -26,9 +26,9 @@ RUN apt-get install php7.2-bcmath php7.2-curl php7.2-gd php7.2-imagick php7.2-in
 ADD php.ini /etc/php/7.2/apache2/conf.d/40-custom.ini
 
 # Include apache2 custom configuration
-COPY demo.apache.conf /usr/local/apache2/conf/demo.apache.conf
-RUN echo "Include /usr/local/apache2/conf/demo.apache.conf" \
-    >> /etc/apache2/apache2.conf
+#COPY demo.apache.conf /usr/local/apache2/conf/demo.apache.conf
+#RUN echo "Include /usr/local/apache2/conf/demo.apache.conf" \
+#    >> /etc/apache2/apache2.conf
 
 # Start apache2 service
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
