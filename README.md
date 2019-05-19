@@ -15,13 +15,13 @@
  - php 7.2
  - MySQL
  - Phpmyadmin
- 
+
 # Типовые команды
 1. docker images - список всех установленных Docker образов.
 1. docker rmi image_name - удалить Docker образ.
 1. docker container ls - список всех активных контейнеров.
 1. docker container ls -a - список всех контейнеров (активных и неактивных).
-1. docker build -t image_name . - создать образ на основе Dockerfile, где: 
+1. docker build -t image_name . - создать образ на основе Dockerfile, где:
    - image_name - имя, с которым образ будет создан.
 1. docker run -dit --name container_name image_name - создать контейнер на основе Docker образа, где:
    - container_name - имя, с которым контейнер будет создан
@@ -34,10 +34,5 @@
 1. docker-compose stop - остановить все контейнеры в Docker Compose конфигурации.
 1. docker-compose rm - удалить все контейнеры в Docker Compose конфигурации.
 
-# Планы дальнейшего развития
- - Добавить работу SEO ссылок
- - Почему-то очень сильно тормозит работа сайта при запуске контейнеров
- - Контейнер с отправкой почты
- - Контейнер с xDebug
- - Окружение для Laravel
- - Окружение для Magento
+# Изменения
+Все изменения будут отражены в changelog файле
