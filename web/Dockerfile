@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 ARG USER_ID
 ARG USER_NAME
@@ -22,10 +22,9 @@ RUN a2enmod rewrite
 RUN apt-get install php7.2 -y
 RUN apt-get install php7.2-mysql php7.2-curl php7.2-gd php7.2-gmp php7.2-imap php7.2-intl php7.2-sqlite php7.2-xsl php7.2-imagick php7.2-soap php7.2-zip -y
 
-# Include apache2 custom configuration
-COPY demo.apache.conf /usr/local/apache2/conf/demo.apache.conf
-RUN echo "Include /usr/local/apache2/conf/demo.apache.conf" \
-    >> /usr/local/apache2/conf/httpd.conf
+# Enable mode rewrite
+ADD apache2.conf /etc/apache2/apache2.conf
+# ADD 000-default.conf /etc/apache2/sites-available/000-default.conf
 
 # Start apache2 service
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
