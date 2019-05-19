@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 ARG USER_ID
 ARG USER_NAME
@@ -24,6 +24,9 @@ RUN apt-get install php7.2-bcmath php7.2-curl php7.2-gd php7.2-imagick php7.2-in
 
 # Custom configs in the php.ini file
 ADD php.ini /etc/php/7.2/apache2/conf.d/40-custom.ini
+
+# Mode rewrite configuration
+ADD apache2.conf /etc/apache2/apache2.conf
 
 # Include apache2 custom configuration
 #COPY demo.apache.conf /usr/local/apache2/conf/demo.apache.conf
