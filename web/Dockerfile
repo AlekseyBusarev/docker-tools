@@ -17,10 +17,12 @@ RUN apt-get install libapache2-mod-php5 -y
 RUN apt-get install php5 -y
 RUN apt-get install php5-mcrypt php5-mysql php5-curl php5-gd php5-gmp php5-imap php5-intl php5-sqlite php5-xsl -y
 
-# Include apache2 custom configuration
-COPY demo.apache.conf /usr/local/apache2/conf/demo.apache.conf
-RUN echo "Include /usr/local/apache2/conf/demo.apache.conf" \
-    >> /usr/local/apache2/conf/httpd.conf
+# Custom configs in the php.ini file
+ADD php.ini /etc/php5/conf.d/40-custom.ini
+
+# Add mode_rewrite settings
+RUN a2enmod rewrite
+ADD demo.apache.conf /etc/apache2/sites-available/default
 
 # Start apache2 service
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"] 
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
