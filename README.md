@@ -35,4 +35,4 @@
 1. docker-compose rm - удалить все контейнеры в Docker Compose конфигурации.
 
 # Изменения
-Все изменения будут отражены в [changelog](https://github.com/AlekseyBusarev/docker-tools/blob/master/changelog.txt) файле
+Все изменения будут отражены в [changelog](https://github.com/AlekseyBusarev/docker-tools/blob/master/changelog.md) файле
