@@ -28,7 +28,7 @@ Magento [ветка magento-app](https://github.com/AlekseyBusarev/docker-tools/
 - Добавлена возмонжость хранить логи apache из контейнера на хост машине
 - Обновлён README.md файл
 
-PHP 7.2 [ветка php5.3](https://github.com/AlekseyBusarev/docker-tools/tree/php7.2)
+PHP 7.2 [ветка php7.2](https://github.com/AlekseyBusarev/docker-tools/tree/php7.2)
 - Добавлен mod_rewrite
 - Изменена основа для web-контейнера с ubuntu:latest на ubuntu:18.04
 - Добавлена возмонжость хранить логи apache из контейнера на хост машине
