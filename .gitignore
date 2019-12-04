@@ -1,1 +1,4 @@
 .env
+*.sh
+!start.sh
+!stop.sh
